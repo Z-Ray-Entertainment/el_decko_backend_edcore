@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "el_decko_backend_edcore"
+authors = [{ name = "Imo 'Vortex Acherontic' Hester", email = "vortex@z-ray.de" },
+]
+dynamic = ["version"]
+readme = "README.md"
+description = "El Decko backend to control El Decko Core"
+license = { text = "GPL-3" }
+requires-python = ">=3.8"
+dependencies = ["el_decko_core >= 2024.2"]
+
+[project.entry-points."eldecko.backend"]
+init = "edb_edcore:edb_init"
+stop = "edb_edcore:edb_stop"
+fire = "edb_edcore:edb_fire_event"
+events = "edb_edcore:edb_available_events"
+
+[project.urls]
+"Homepage" = "https://github.com/Z-Ray-Entertainment/el_decko_backend_edcore"
+"Bug Tracker" = "https://github.com/Z-Ray-Entertainment/el_decko_backend_edcore/issues"
+
+[tool.setuptools.dynamic]
+version = { attr = "edb_edcore.VERSION" }
+
+[tool.setuptools]
+include-package-data = true
+platforms = ["Linux"]
